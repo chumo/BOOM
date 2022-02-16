@@ -1,4 +1,4 @@
-async function saveFunc(){
+async function saveData(){
 
     let contents = '';
     points.forEach(function(d) {
@@ -20,4 +20,14 @@ async function saveFunc(){
 
     // close the file and write the contents to disk.
     await writableStream.close();
+}
+
+function deleteData(){
+    let confirmation = confirm(
+        'Are you sure you want to delete all the data? This action CANNOT be undone.'
+    );
+    if (confirmation) {
+        points = [];
+        plotPoints(points);
+    }
 }
