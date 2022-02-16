@@ -1,0 +1,17 @@
+.title {
+    background-color:#25435B;
+    padding:10px;
+}
+
+.titleText {
+    color: white;
+    font-family: helvetica;
+    font-size: 40px;
+    font-weight: 100;
+    margin-bottom: 0px;
+}
+
+#saveTrigger {
+    padding: 0px 5px 0px 5px;
+    margin-left: 10px;
+}
