@@ -25,10 +25,10 @@ The data acquisition is done using the [Web Serial API](https://developer.mozill
 
 ## Screenshots:
 
-#### Acquisition panel
+#### Initial panel
 ![gui](images/connect.png)
 
-#### Save dialog
+#### Acquisition panel
 ![gui_save](images/acquisition.png)
 
 
