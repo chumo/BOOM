@@ -8,6 +8,7 @@
     <script src="https://d3js.org/d3.v7.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/plotly.js/2.9.0/plotly.min.js"></script>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+    <link href="https://fonts.googleapis.com/css?family=Ubuntu+Mono" rel="stylesheet">
     <link href="css/style.css" rel="stylesheet">
 </head>
 <body>
@@ -18,17 +19,17 @@
                 <img src="images/almabe_red.png" style="width:150px;" alt="logo">
             </div>
             <div class="col-md-8 text-center">
-                <p class='titleText'>Pressure Sensor Read</p>
+                <p class='titleText'>PEL 8024 Test for Oxidizing Liquids (A.21 / O.2)</p>
             </div>
         </div>
 
         <div class="row" style="margin-top: 10px;">
             <div class="col-md-6">
-                <button type="button" id="button" class="btn btn-primary">CONNECT TO SERIAL</button>
+                <button type="button" id="button" class="btn btn-primary" onclick="getReader();">CONNECT TO SERIAL</button>
             </div>
         </div>
 
-        <div id="layout" style="display: none;">
+        <div id="layoutUI" style="display: none;">
             <div class="row" style="margin-top: 10px;">
                 <div class="col-md-6">
                     <div id="formSwitch" class="form-check form-switch">
@@ -36,6 +37,58 @@
                         <label class="form-check-label" for="switch">Data Acquisition</label>
                         <button type="button" class="btn btn-primary btn-sm myButton" onclick="saveData()">SAVE DATA</button>
                         <button type="button" class="btn btn-danger btn-sm myButton" onclick="deleteData()">DELETE DATA</button>
+                    </div>
+                </div>
+            </div>
+            <div class="row d-flex justify-content-between" style="margin-top: 10px;">
+
+                <div class="col-md-6">
+                    <div class="form-group row">
+                        <label for="inputDate" class="col-sm-2 col-form-label text-right">Date</label>
+                        <div class="col-sm-9">
+                            <input type="text" class="form-control" id="inputDate" placeholder='Date and time at saving' readonly>
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label for="inputAnalyst" class="col-sm-2 col-form-label">Analyst</label>
+                        <div class="col-sm-9">
+                            <input type="text" class="form-control" id="inputAnalyst" placeholder="Analyst Name">
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label for="inputSampleNumber" class="col-sm-2 col-form-label">Sample</label>
+                        <div class="col-sm-9">
+                            <input type="text" class="form-control" id="inputSampleNumber" placeholder="Sample Number">
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label for="inputTInterval" class="col-sm-2 col-form-label text-right">Time Interval</label>
+                        <div class="col-sm-9">
+                            <input type="text" class="form-control" id="inputTInterval" placeholder='Click initial and final times' readonly>
+                        </div>
+                    </div>
+                    <h6 style="margin-top:20px;">Select the Y axis units</h6>
+                    <div class="btn-group" role="group" aria-label="Basic radio toggle button group">
+                        <input type="radio" class="btn-check" name="btnradio" id="btnradio1" autocomplete="off" onclick="selectedUnits='pressure [MPa]';plotPoints(points);" checked>
+                        <label class="btn btn-outline-secondary btn-sm" for="btnradio1">pressure [MPa]</label>
+
+                        <input type="radio" class="btn-check" name="btnradio" id="btnradio2" autocomplete="off" onclick="selectedUnits='pressure [kPa]';plotPoints(points);">
+                        <label class="btn btn-outline-secondary btn-sm" for="btnradio2">pressure [kPa]</label>
+
+                        <input type="radio" class="btn-check" name="btnradio" id="btnradio3" autocomplete="off" onclick="selectedUnits='pressure [psi]';plotPoints(points);">
+                        <label class="btn btn-outline-secondary btn-sm" for="btnradio3">pressure [psi]</label>
+
+                        <input type="radio" class="btn-check" name="btnradio" id="btnradio4" autocomplete="off" onclick="selectedUnits='serial read';plotPoints(points);">
+                        <label class="btn btn-outline-secondary btn-sm" for="btnradio4">serial read</label>
+                    </div>
+                    <div id="formSwitch" class="form-check form-switch">
+                        <input class="form-check-input" type="checkbox" id="switchLimits" onclick="plotPoints(points);">
+                        <label class="form-check-label" for="switchLimits">Show Limits</label>
+                    </div>
+                </div>
+
+                <div class="col-md-6">
+                    <div id="digitDisplay">
                     </div>
                 </div>
             </div>
