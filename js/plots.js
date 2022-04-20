@@ -71,8 +71,8 @@ function getVLine(xPos) {
 
 ///////////////////////////////////////////////////////////////////////////////
 function plotPoints(points) {
-    let limitMin = 0.69;
-    let limitMax = 1.35;
+    let limitMin = 0.689474;
+    let limitMax = 3 * limitMin;
     let displayText = '';
 
     if (points.length > 0) {
