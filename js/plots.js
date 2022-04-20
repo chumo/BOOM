@@ -71,7 +71,7 @@ function getVLine(xPos) {
 
 ///////////////////////////////////////////////////////////////////////////////
 function plotPoints(points) {
-    let limitMin = 0.689474;
+    let limitMin = 0.6894745;
     let limitMax = 3 * limitMin;
     let displayText = '';
 
@@ -165,6 +165,7 @@ function plotPoints(points) {
         graphDiv,
         data,
         layout,
+        config={displaylogo: false, responsive: true},
     );
 
 }
